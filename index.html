@@ -4,49 +4,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-
+    <meta name="theme-color" content="#f7f7fb">
+    <title>do.it — Your daily space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Main navigation">
+            <a class="brand" href="#" aria-label="do.it home">
+                <span class="brand-mark" aria-hidden="true">✓</span>
+                <span>do<span class="brand-dot">.</span>it</span>
+            </a>
 
-   
-        <h1 style="text-align: center;">TO DO LIST</h1>
-   
+            <div class="nav-label">WORKSPACE</div>
+            <nav class="task-nav" aria-label="Task views">
+                <button class="nav-link is-active" type="button" data-view="all">
+                    <span class="nav-icon" aria-hidden="true">▦</span>
+                    <span>All tasks</span>
+                    <span class="nav-count" id="all-count">0</span>
+                </button>
+                <button class="nav-link" type="button" data-view="today">
+                    <span class="nav-icon" aria-hidden="true">◷</span>
+                    <span>Today</span>
+                </button>
+                <!-- <button class="nav-link" type="button" data-view="upcoming">
+                    <span class="nav-icon" aria-hidden="true">▤</span>
+                    <span>Upcoming</span>
+                </button>
+                <button class="nav-link" type="button" data-view="completed">
+                    <span class="nav-icon" aria-hidden="true">✓</span>
+                    <span>Completed</span>
+                </button> -->
+            </nav>
 
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <span class="note-sparkle" aria-hidden="true"></span>
+                    <p>Small steps add up to big things.</p>
+                </div>
+                <div class="profile">
+                    <!-- <div class="avatar" aria-hidden="true">Y</div> -->
+                    <div>
+                        <strong>Your space</strong>
+                        <span>A fresh start, every day</span>
+                    </div>
+                    <!-- <span class="profile-menu" aria-hidden="true">···</span> -->
+                </div>
+            </div>
+        </aside>
 
-    <div class="container">
-        <h3>do.it</h3>
-        <br>
-        <h2>Your day,</h2><br>
-        <h2 style="color: rgb(205, 111, 255);">your tasks.</h2>
-        <small>A little progress goes a long way <br> Your doing great, keep Going !</small>
-        <br>
-        <br>
-        <h4>My tasks</h4>
-        <div style="display: flex; gap:10px;">
-            <input type="text" id="txtTask" placeholder="Today what needs to be Done ? ">
-            <input type="button" value=" + " onclick="addTask()" style="padding: 10 px 15px;
-             background-color: black; color: aliceblue; border-radius: 35%;">
-        </div>
+        <main class="main-content">
+            <header class="topbar">
+                <div class="breadcrumb">Workspace <span>/</span> <strong id="current-view-label">All tasks</strong></div>
+                <div class="today-date" id="today-date"></div>
+            </header>
 
-        <ul id="taskList"></ul>
+            <section class="welcome">
+                <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR DAILY SPACE</div>
+                <h1>Your day,<br><span>your pace.</span></h1>
+                <p>A little progress goes a long way. What would you like to get done?</p>
+            </section>
 
+            <section class="focus-card" aria-label="Daily encouragement">
+                <div class="focus-icon" aria-hidden="true">🤍</div>
+                <div>
+                    <span class="focus-label">A gentle reminder</span>
+                    <strong>Make today a little more yours.</strong>
+                </div>
+                <span class="focus-decoration" aria-hidden="true"></span>
+            </section>
 
-        <small>One thing at a time</small>
+            <section class="stats" aria-label="Task overview">
+                <article class="stat-card">
+                    <div class="stat-heading"><span>To do</span><span class="stat-icon lavender" aria-hidden="true">◷</span></div>
+                    <strong class="stat-value" id="todo-stat">0</strong>
+                    <span class="stat-caption">tasks waiting for you</span>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-heading"><span>Completed</span><span class="stat-icon mint" aria-hidden="true">✓</span></div>
+                    <strong class="stat-value" id="done-stat">0</strong>
+                    <span class="stat-caption">little wins so far</span>
+                </article>
+                <!-- <article class="stat-card progress-stat">
+                    <div class="stat-heading"><span>Daily progress</span><span class="progress-percent" id="progress-label">0%</span></div>
+                    <div class="progress-track" role="progressbar" aria-label="Tasks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar">
+                        <span id="progress-fill"></span>
+                    </div>
+                    <span class="stat-caption" id="progress-caption">Every step counts</span>
+                </article> -->
+            </section>
 
-        <script src="app.js"></script>
+            <section class="tasks-section" aria-labelledby="tasks-heading">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-kicker">YOUR LIST</span>
+                        <h2 id="tasks-heading">My tasks</h2>
+                    </div>
+                    <span class="list-hint">One thing at a time <span aria-hidden="true"></span></span>
+                </div>
+
+                <form class="task-form" id="task-form">
+                    <label class="sr-only" for="task-input">New task</label>
+                    <span class="input-plus" aria-hidden="true">＋</span>
+                    <input id="task-input" name="task" type="text" placeholder="Add a task to your day..." maxlength="160" autocomplete="off" required>
+                    <label class="sr-only" for="task-date">Due date (optional)</label>
+                    <input class="date-input" id="task-date" name="dueDate" type="date" aria-label="Due date (optional)">
+                    <button class="add-button" type="submit"><span aria-hidden="true">＋</span> Add task</button>
+                </form>
+
+                <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+                <ul class="task-list" id="task-list" aria-live="polite"></ul>
+            </section>
+
+            <footer class="page-footer"><span aria-hidden="true">✿</span> Breathe in. Pick one thing. Begin.</footer>
+        </main>
     </div>
-
-
-
-
-
-
-
-   
+    <script src="app.js"></script>
 </body>
 
 </html>
