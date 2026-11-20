@@ -1,9 +1,9 @@
 :root {
     color-scheme: light;
-    --ink: #29283a;
-    --muted: #89889a;
+    --ink: #131316;
+    --muted: #9a8888;
     --line: #eeedf3;
-    --purple: #7864dc;
+    --purple: #67159d;
     --purple-dark: #6651ca;
     --purple-soft: #f0edff;
     --surface: #ffffff;
@@ -24,6 +24,7 @@ body {
     margin: 0;
     background: var(--page);
     color: var(--ink);
+    background-color: rgb(230, 215, 255);
 }
 
 button,
@@ -49,6 +50,7 @@ button {
     padding: 34px 20px 20px;
     border-right: 1px solid #efeff4;
     background: var(--surface);
+    background-color: #8d4bb8;
 }
 
 .brand {
